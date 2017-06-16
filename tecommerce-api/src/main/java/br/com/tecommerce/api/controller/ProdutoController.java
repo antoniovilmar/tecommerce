@@ -35,6 +35,7 @@ public class ProdutoController {
 	
 	@RequestMapping(value = "/produto", method = RequestMethod.GET)
 	public List<ProdutoDto> listar() {
+		
 		return produtoServiceConsultar.listar();
 	}
 

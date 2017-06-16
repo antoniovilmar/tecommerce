@@ -5,14 +5,14 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import br.com.tcommerce.domain.produto.Produto;
 import br.com.tecommerce.application.dto.ProdutoDto;
 import br.com.tecommerce.application.dto.conversor.ProdutoEntityParaProdutoDto;
 import br.com.tecommerce.repository.ProdutoRepository;
 
-@Component
+@Service
 public class ProdutoServiceConsultarImpl implements ProdutoServiceConsultar {
 
 	private ProdutoRepository produtoRepository;
@@ -36,6 +36,7 @@ public class ProdutoServiceConsultarImpl implements ProdutoServiceConsultar {
 	@Override
 	public List<ProdutoDto> listar() {
 		return produtoRepository.findAll().stream().map(paraProdutoDto).collect(Collectors.toList());
+		
 	}
 
 }

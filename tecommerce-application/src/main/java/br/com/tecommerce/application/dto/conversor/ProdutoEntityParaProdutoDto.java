@@ -2,13 +2,14 @@ package br.com.tecommerce.application.dto.conversor;
 
 import java.util.function.Function;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import br.com.tcommerce.domain.produto.Produto;
 import br.com.tecommerce.application.dto.ProdutoDto;
 
-@Component
+@Service
 public class ProdutoEntityParaProdutoDto implements Function<Produto, ProdutoDto> {
+	
 
 	@Override
 	public ProdutoDto apply(Produto produtoEntity) {

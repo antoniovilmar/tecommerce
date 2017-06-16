@@ -6,7 +6,7 @@ public class ProdutoDadosBasicosDto {
 	private String descricao;
 	private String valor;
 
-	public ProdutoDadosBasicosDto() {
+	protected ProdutoDadosBasicosDto() {
 
 	}
 

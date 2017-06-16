@@ -4,19 +4,14 @@ public class Erro {
 
     String mensagem;
 
-    public Erro() {}
+    protected Erro() {}
 
-    public Erro(String mensagem) {
+    protected Erro(String mensagem) {
         this.mensagem = mensagem;
     }
 
     public String getMensagem() {
         return mensagem;
     }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
-    }
-
 
 }

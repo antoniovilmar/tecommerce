@@ -2,14 +2,14 @@ package br.com.tecommerce.application;
 
 import javax.inject.Inject;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import br.com.tcommerce.domain.produto.Produto;
 import br.com.tecommerce.application.dto.ProdutoDadosBasicosDto;
 import br.com.tecommerce.application.dto.conversor.ProdutoDadosBasicosDtoParaProdutoEntity;
 import br.com.tecommerce.repository.ProdutoRepository;
 
-@Component
+@Service
 public class ProdutoServiceSalvarImpl implements ProdutoServiceSalvar {
 
 	private ProdutoRepository produtoRepository;
