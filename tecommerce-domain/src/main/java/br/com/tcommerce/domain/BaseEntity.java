@@ -10,31 +10,10 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 public abstract class BaseEntity {
-	
-	private Integer id;
-	
-	@Override
-	public int hashCode() {
-		return new HashCodeBuilder().append(getId()).hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
-			return false;
-		}
-		BaseEntity alvoComparacao = (BaseEntity) obj;
-		return new EqualsBuilder().append(getId(), alvoComparacao.getId()).isEquals();
-	}
 
 	@Override
 	public String toString() {
@@ -59,9 +38,6 @@ public abstract class BaseEntity {
 			throw new DomainBusinessException(StringUtils.join(violationMessages, " \n "));
 		}
 	}
-	
-	public Integer getId() {
-		return id;
-	}
+
 
 }

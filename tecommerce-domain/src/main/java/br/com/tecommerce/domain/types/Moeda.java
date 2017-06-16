@@ -1,5 +1,5 @@
 package br.com.tecommerce.domain.types;
-
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -7,8 +7,16 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
-public class Moeda {
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
+@Embeddable
+public class Moeda implements Serializable {
+
+	private static final long serialVersionUID = -4924962785465147613L;
+	@NotNull
+	@Column(name = "valor", scale = 19, precision = 8)
 	private BigDecimal valor;
 
 	protected Moeda() {
@@ -56,7 +64,8 @@ public class Moeda {
 	}
 
 	public Boolean maiorIgualQue(Moeda valor) {
-		return this.getValorFormatado().doubleValue() > valor.getValorFormatado().doubleValue() || this.getValorFormatado().equals(valor.getValorFormatado());
+		return this.getValorFormatado().doubleValue() > valor.getValorFormatado().doubleValue()
+				|| this.getValorFormatado().equals(valor.getValorFormatado());
 	}
 
 	public Boolean maiorZero() {
@@ -76,7 +85,8 @@ public class Moeda {
 	}
 
 	public Boolean menorIgualQue(Moeda valor) {
-		return this.getValorFormatado().doubleValue() < valor.getValorFormatado().doubleValue() || this.getValorFormatado().equals(valor.getValorFormatado());
+		return this.getValorFormatado().doubleValue() < valor.getValorFormatado().doubleValue()
+				|| this.getValorFormatado().equals(valor.getValorFormatado());
 	}
 
 	public Boolean igual(Moeda valor) {
@@ -226,5 +236,5 @@ public class Moeda {
 		DecimalFormatSymbols dfs = new DecimalFormatSymbols(new Locale("pt", "BR"));
 		DecimalFormat df = new DecimalFormat("#,###,##0.00", dfs);
 		return df.format(new Double(valor.toString()));
-	}	
+	}
 }

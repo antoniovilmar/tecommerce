@@ -1,5 +1,9 @@
 package br.com.tcommerce.domain.produto;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -7,7 +11,12 @@ import br.com.tcommerce.domain.BaseEntity;
 import br.com.tcommerce.domain.BuilderDominio;
 import br.com.tecommerce.domain.types.Moeda;
 
+@Entity
 public class Produto extends BaseEntity {
+	
+	@Id
+	@GeneratedValue
+	private Long id;
 
 	@NotNull
 	@Size(max = 100, message = "{tamanho.cemcaracteres.invalido}")
@@ -19,6 +28,7 @@ public class Produto extends BaseEntity {
 
 	@NotNull
 	@br.com.tcommerce.beanvalidation.Moeda
+	@Embedded
 	private Moeda valor;
 
 	protected Produto() {
@@ -35,6 +45,10 @@ public class Produto extends BaseEntity {
 
 	public Moeda getValor() {
 		return valor;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 	public static class ProdutoBuilder extends BuilderDominio<Produto> {
