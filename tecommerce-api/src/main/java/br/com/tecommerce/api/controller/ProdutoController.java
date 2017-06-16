@@ -1,5 +1,7 @@
 package br.com.tecommerce.api.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,8 +29,13 @@ public class ProdutoController {
 	}
 
 	@RequestMapping(value = "/produto/{id}", method = RequestMethod.GET)
-	public ProdutoDto consultar(@PathVariable("id") Long id) {
+	public ProdutoDto consultarPorId(@PathVariable("id") Long id) {
 		return produtoServiceConsultar.consultarPorId(id);
+	}
+	
+	@RequestMapping(value = "/produto", method = RequestMethod.GET)
+	public List<ProdutoDto> listar() {
+		return produtoServiceConsultar.listar();
 	}
 
 	@RequestMapping(value = "/produto", method = RequestMethod.POST)

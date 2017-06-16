@@ -1,5 +1,8 @@
 package br.com.tecommerce.application;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Component;
@@ -28,6 +31,11 @@ public class ProdutoServiceConsultarImpl implements ProdutoServiceConsultar {
 		final Produto produto = produtoRepository.findOne(id);
 		return paraProdutoDto.apply(produto);
 
+	}
+
+	@Override
+	public List<ProdutoDto> listar() {
+		return produtoRepository.findAll().stream().map(paraProdutoDto).collect(Collectors.toList());
 	}
 
 }
