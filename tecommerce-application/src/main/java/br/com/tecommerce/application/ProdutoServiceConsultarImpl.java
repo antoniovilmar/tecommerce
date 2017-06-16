@@ -6,24 +6,28 @@ import org.springframework.stereotype.Component;
 
 import br.com.tcommerce.domain.produto.Produto;
 import br.com.tecommerce.application.dto.ProdutoDto;
+import br.com.tecommerce.application.dto.conversor.ProdutoEntityParaProdutoDto;
 import br.com.tecommerce.repository.ProdutoRepository;
 
 @Component
 public class ProdutoServiceConsultarImpl implements ProdutoServiceConsultar {
-	
+
+	private ProdutoRepository produtoRepository;
+	private ProdutoEntityParaProdutoDto paraProdutoDto;
+
 	@Inject
-	private  ProdutoRepository produtoRepository;
+	public ProdutoServiceConsultarImpl(ProdutoRepository produtoRepository,
+			ProdutoEntityParaProdutoDto produtoEntityParaProdutoDto) {
+		this.produtoRepository = produtoRepository;
+		this.paraProdutoDto = produtoEntityParaProdutoDto;
+	}
 
 	@Override
 	public ProdutoDto consultarPorId(Long id) {
-		
-		Produto produto = produtoRepository.findOne(id);
-		final ProdutoDto produtoDto = new ProdutoDto();
-		produtoDto.setDescricao(produto.getDescricao());
-		produtoDto.setNome(produto.getNome());
-		
-		return produtoDto;
-		
+
+		final Produto produto = produtoRepository.findOne(id);
+		return paraProdutoDto.apply(produto);
+
 	}
 
 }

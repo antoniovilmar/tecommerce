@@ -1,9 +1,9 @@
 package br.com.tecommerce.application;
 
-import br.com.tecommerce.application.dto.ProdutoDto;
+import br.com.tecommerce.application.dto.ProdutoDadosBasicosDto;
 
 public interface ProdutoServiceSalvar {
 	
-	public void salvar(final ProdutoDto produtoDto);
+	public void salvar(final ProdutoDadosBasicosDto produtoDadosBasicosDto);
 
 }

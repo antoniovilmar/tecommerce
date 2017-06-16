@@ -1,24 +1,22 @@
 package br.com.tecommerce.application.dto;
 
-public class ProdutoDto {
-	
-	private String nome;
-	private  String descricao;
-	
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+public class ProdutoDto extends ProdutoDadosBasicosDto {
+
+	private Long id;
+	private String valorFormatado;
+
+	public ProdutoDto(String nome, String descricao, Long id, String valorFormatado) {
+		super(nome, descricao, valorFormatado);
+		this.id = id;
+		this.valorFormatado = valorFormatado;
 	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public Long getId() {
+		return id;
 	}
-	
-	public String getDescricao() {
-		return descricao;
-	}
-	
-	public String getNome() {
-		return nome;
+
+	public String getValorFormatado() {
+		return valorFormatado;
 	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.tecommerce.application.ProdutoServiceConsultar;
 import br.com.tecommerce.application.ProdutoServiceSalvar;
+import br.com.tecommerce.application.dto.ProdutoDadosBasicosDto;
 import br.com.tecommerce.application.dto.ProdutoDto;
 
 @RestController
@@ -31,7 +32,7 @@ public class ProdutoController {
 	}
 
 	@RequestMapping(value = "/produto", method = RequestMethod.POST)
-	public void salvar(@RequestBody ProdutoDto produtoDto) {
-		produtoServiceSalvar.salvar(produtoDto);
+	public void salvar(@RequestBody ProdutoDadosBasicosDto produtoDadosBasicosDto) {
+		produtoServiceSalvar.salvar(produtoDadosBasicosDto);
 	}
 }
