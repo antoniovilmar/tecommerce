@@ -16,7 +16,7 @@ public class Moeda implements Serializable {
 
 	private static final long serialVersionUID = -4924962785465147613L;
 	@NotNull
-	@Column(name = "valor", scale = 19, precision = 8)
+	@Column(name = "valor")
 	private BigDecimal valor;
 
 	protected Moeda() {
